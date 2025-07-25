@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player </title>
+    <link rel="stylesheet" href="cvp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="fullpage"></div>
+    <div class="navbar"></div>
+    <div class="videocontainer">
+        <img  src="https://tse3.mm.bing.net/th/id/OIP.DcperuTwWLJWBGAfxLo-jwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Video" id="thumbnail">
+        <video id="videoPlayer" >
+            <source src="https://www.geeksforgeeks.org/batch/js-beginner-to-advanced/track/custom-video-player-from-scratch/video/MjgzNjc%3D" type="video/mp4">
+                    Your browser does not support the video tag.
+
+        </video>
+            <div class="controls">
+                <div class="control-button">
+                    <button id="skipmin-10">
+                        <i class="fa-solid fa-backward"></i>
+                    </button>
+                    <button id="pause">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                    <button id="skip-10">
+                        <i class="fa-solid fa-forward"></i>
+                    </button>
+                </div>
+                <div class="timer">
+                    <span class="current-time">00:00</span>
+                    <span class="sperator">/</span>
+                    <span class="max-duration">00:00</span>
+                </div>
+                <div class="playback-line">
+                    <div class="progressbar"></div>
+                </div>
+                <div class="right">
+                    <div class="volume-container">
+                        <div id="mute">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                        </input>
+                        <div class="full-screen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    <div class="comments">
+        <div></div>
+    </div>
+    <div class="suggestions">
+        <div></div>
+    </div>
+</body>
+</html>
