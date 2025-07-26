@@ -6,14 +6,15 @@
     <title>Custom Video Player </title>
     <link rel="stylesheet" href="cvp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="cvp.js" defer></script>
 </head>
 <body>
-    <div class="fullpage"></div>
+    <div class="fullpage">
     <div class="navbar"></div>
     <div class="videocontainer">
         <img  src="https://tse3.mm.bing.net/th/id/OIP.DcperuTwWLJWBGAfxLo-jwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Video" id="thumbnail">
         <video id="videoPlayer" >
-            <source src="https://www.geeksforgeeks.org/batch/js-beginner-to-advanced/track/custom-video-player-from-scratch/video/MjgzNjc%3D" type="video/mp4">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                     Your browser does not support the video tag.
 
         </video>
@@ -30,9 +31,9 @@
                     </button>
                 </div>
                 <div class="timer">
-                    <span class="current-time">00:00</span>
-                    <span class="sperator">/</span>
-                    <span class="max-duration">00:00</span>
+                    <span id="current-time">00:00</span>
+                    <span id="sperator">/</span>
+                    <span id="max-duration">00:00</span>
                 </div>
                 <div class="playback-line">
                     <div class="progressbar"></div>
@@ -55,10 +56,15 @@
             </div>
     </div>
     <div class="comments">
-        <div></div>
+        <div>
+
+        </div>
     </div>
     <div class="suggestions">
-        <div></div>
+        <div>
+
+        </div>
+    </div>
     </div>
 </body>
 </html>
