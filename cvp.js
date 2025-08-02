@@ -42,7 +42,7 @@ function toggleplaypause() {
     }
     ispalying=!ispalying;
 }
-document.addEventListener('keydown',function(event){
+videocontainer.addEventListener('keydown',function(event){
     if (event.key==32||event.key==" "){
         event.preventDefault();
         toggleplaypause();
@@ -77,7 +77,7 @@ mute.addEventListener('click',function(){
         volume.value=0;
     }
 })
-document.addEventListener('keydown',function(event){
+videocontainer.addEventListener('keydown',function(event){
     if(event.key=="M"||event.key=="m"){
         event.preventDefault();
          if(video.muted){
@@ -124,17 +124,58 @@ video.addEventListener('ended',()=>{
     thumbnail();
 })
 const  timeformat=(timeInput)=>{
-    var minute=Math.floor(timeInput/60);
-    minute=minute<10? "0"+minute:minute;
-    var second=Math.floor(timeInput%60);
-    second=second<10? "0"+second:second;
+    let minute=Math.floor(timeInput/60);
+    minute=minute<10? "0" + minute:minute;
+
+    let second=Math.floor(timeInput%60);
+    second=second<10? "0" + second:second;
     return `${minute}:${second}`;
 }
 setInterval(()=>{
-   currenttime.innerHTML=timeformat(video.currenttime);
-   maxduration.innerHTML=timeformat(video.maxduration);
+   currenttime.innerHTML=timeformat(video.currentTime);
+   maxduration.innerHTML=timeformat(video.duration);
 },1)
 
-fullscreen.addEventListener('click',()=>{
-    fullscreen.style.width=flex;
+playbackline.addEventListener('click',(e)=>{
+        let timelineWidth=playbackline.clientWidth;
+        video.currentTime=(e.offsetX/timelineWidth)*video.duration;
 })
+function updatevolumebackground(){
+    const value= (volume.value-volume.min)/(volume.max-volume.min)*100;
+    volume.style.setProperty('--value', `${value}%`);
+}
+volume.addEventListener('input',updatevolumebackground);
+updatevolumebackground();
+fullscreen.addEventListener('click',()=>{
+    if(!document.fullscreenElement){
+        videocontainer.requestFullscreen().catch(error => {
+            console.error(`Error attempting to enable fullscreen mode: ${error.message} `);
+            alert(`Error attempting to enter fullscreen mode: ${error.message}`);
+        });
+    }
+    else{
+        document.exitFullscreen().catch(error => {
+            console.error(`Error attempting to exit fullscreen mode: ${error.message}`);
+            alert(`Error attempting to exit fullscreen mode: ${error.message}`);
+        });
+    }
+})
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const commentForm = document.querySelector('.comment-form');
+    const commentList = document.querySelector('.comment-list');
+
+    commentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const textarea = commentForm.querySelector('textarea');
+        const text = textarea.value.trim();
+        if (text) {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `<strong>You:</strong> ${text}`;
+            commentList.appendChild(commentDiv);
+            textarea.value = '';
+        }
+    });
+});
