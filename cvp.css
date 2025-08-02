@@ -65,15 +65,16 @@
     font-size: 20px;
     cursor: pointer;
 }
-.controls.control-button #pause {
+.controls.control-button #play {
     font-size: 20px;
 }
-.controls.timer{
+.controls .timer{
     display: flex;
     flex-direction: row;
     align-items: center;
     color:white;
     font-size: 12px;
+    
     
 }
 .controls #sperate {
